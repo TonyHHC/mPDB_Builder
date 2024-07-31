@@ -96,8 +96,6 @@ if __name__ == '__main__':
     putStringByUTF8(headers, 'BOOK', 60)
     putStringByUTF8(headers, 'MTIU', 64)
     putInt(headers, (iRecords+2), 2, 76)
-    
-    #print(headers)
 
     '''
     tmp = bytes(headers[0:34+1]).decode('utf-8').strip('\x00')
@@ -116,12 +114,13 @@ if __name__ == '__main__':
     datas_1.extend(bytearray(str(iRecords), 'ascii'))
     datas_1.extend(bytes([27, 0]))
 
-    for txtContent in txtContents:
+    for i, txtContent in enumerate(txtContents):
         chapterCaption = getLineFromTXT(txtContent, 1).strip()
         datas_1.extend(String2UTF16(chapterCaption))
-        datas_1.extend(bytes([13, 0, 10, 0]))
+        if i < (len(txtContents)-1):
+            datas_1.extend(bytes([13, 0, 10, 0]))
 
-    #print(datas)
+    #print(datas_1)
 
     # 每筆資料的起始位置及屬性
     eachDataPos = bytearray((iRecords+2)*8)

@@ -49,4 +49,10 @@
 
 範例
 
-    python builder.py '聖堂一' '骷髏精靈' 'D:\Project\Tony\Python\重新下載聖堂\final_1' '1' '202' 'D:\Temp'
+    python builder.py '聖堂一' '骷髏精靈' 'D:\Project\Tony\Python\重新下載聖堂\final' '1' '202' 'D:\Temp'
+
+    python builder.py '聖堂二' '骷髏精靈' 'D:\Project\Tony\Python\重新下載聖堂\final' '203' '406' 'D:\Temp'
+    
+    python builder.py '聖堂三' '骷髏精靈' 'D:\Project\Tony\Python\重新下載聖堂\final' '407' '645' 'D:\Temp'
+    
+    python builder.py '聖堂四' '骷髏精靈' 'D:\Project\Tony\Python\重新下載聖堂\final' '646' '979' 'D:\Temp'
