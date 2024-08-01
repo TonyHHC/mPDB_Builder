@@ -1,3 +1,68 @@
+# 使用方式
+
+## builder.py
+
+### 用途
+
+自動讀取指定目錄下的文字檔，並轉換為 uPDB 檔
+
+### 語法
+
+    usage: builder [-h] bookName authorName txtSourceDir startIndex endIndex ouputDir
+
+    uPDB 格式電子書建立程式
+
+    positional arguments:
+        bookName      請輸入書名
+        authorName    請輸入作者
+        txtSourceDir  請輸入原始文字檔目錄
+        startIndex    從第幾個 txt 檔開始建立
+        endIndex      截止的 txt 檔編號
+        ouputDir      輸出的 mPDB 檔路徑
+
+    options:
+        -h, --help    show this help message and exit
+
+### 範例
+
+    假如 'D:\Project\Tony\Python\重新下載聖堂\final' 目錄下已經有 979 個文字檔，檔名為 1.txt、2.txt、... 978.txt、979.txt，可以執行以下指令分別產生 4 個 updb 檔 :
+    
+    python builder.py '聖堂一' '骷髏精靈' 'D:\Project\Tony\Python\重新下載聖堂\final' '1' '202' 'D:\Temp'
+
+    python builder.py '聖堂二' '骷髏精靈' 'D:\Project\Tony\Python\重新下載聖堂\final' '203' '406' 'D:\Temp'
+    
+    python builder.py '聖堂三' '骷髏精靈' 'D:\Project\Tony\Python\重新下載聖堂\final' '407' '645' 'D:\Temp'
+    
+    python builder.py '聖堂四' '骷髏精靈' 'D:\Project\Tony\Python\重新下載聖堂\final' '646' '979' 'D:\Temp'
+
+# removeGarbageLine.py
+
+### 用途
+
+將文字檔中不必要的行刪除掉
+
+garbage 字的定義會參考同樣目錄下的 garbageWords.lst
+
+### 範例
+
+    python removeGarbageLine.py 'D:\Project\Tony\Python\重新下載聖堂\final' 'D:\Temp\zzz'
+
+    python removeGarbageLine.py 'D:\Project\Tony\Python\重新下載聖堂\final' 'D:\Project\Tony\Python\重新下載聖堂\final'
+    (source 與 target 目錄一樣的話要記得先備份)
+
+# chineseConvert.py
+
+### 用途
+
+將簡體中文轉為繁體中文，但是保留簡體用語
+
+### 範例
+
+    python chineseConvert.py 'D:\Project\Tony\Python\重新下載聖堂\final' 'D:\Temp\zzz'
+
+    python chineseConvert.py 'D:\Project\Tony\Python\重新下載聖堂\final' 'D:\Project\Tony\Python\重新下載聖堂\final'
+    (source 與 target 目錄一樣的話要記得先備份)
+
 # uPDB (Unicode) 檔規格
 
 1. PDB是源自Palm作業系統的一個單一檔案，簡易資料庫。
@@ -28,31 +93,3 @@
 
 *註：uPDB 的 Unicode 編碼是 UTF-16 编碼的字節數组*
 
-# 使用方式
-
-語法
-
-    usage: builder [-h] bookName authorName txtSourceDir startIndex endIndex ouputDir
-
-    uPDB 格式電子書建立程式
-
-    positional arguments:
-        bookName      請輸入書名
-        authorName    請輸入作者
-        txtSourceDir  請輸入原始文字檔目錄
-        startIndex    從第幾個 txt 檔開始建立
-        endIndex      截止的 txt 檔編號
-        ouputDir      輸出的 mPDB 檔路徑
-
-    options:
-        -h, --help    show this help message and exit
-
-範例
-
-    python builder.py '聖堂一' '骷髏精靈' 'D:\Project\Tony\Python\重新下載聖堂\final' '1' '202' 'D:\Temp'
-
-    python builder.py '聖堂二' '骷髏精靈' 'D:\Project\Tony\Python\重新下載聖堂\final' '203' '406' 'D:\Temp'
-    
-    python builder.py '聖堂三' '骷髏精靈' 'D:\Project\Tony\Python\重新下載聖堂\final' '407' '645' 'D:\Temp'
-    
-    python builder.py '聖堂四' '骷髏精靈' 'D:\Project\Tony\Python\重新下載聖堂\final' '646' '979' 'D:\Temp'

@@ -35,6 +35,33 @@ def getLineFromTXT(txtContent, lineNumber):
     tmp = UTF162String(txtContent).splitlines()
     return tmp[lineNumber-1]
 
+def normalizeTXT(txtContent):
+    lines = txtContent.splitlines()
+
+    # 去除所有空白行（包括只包含空白字符的行）
+    lines = [line for line in lines if line.strip()]
+
+    formatted_lines = []
+
+    # 添加第一行
+    formatted_lines.append(lines[0].strip())
+
+    if len(lines) > 1:
+        # 添加兩個空白行
+        formatted_lines.append('')
+        formatted_lines.append('')
+
+        # 添加第二行及後續行，並在每行之前添加兩個空白
+        for i, line in enumerate(lines[1:]):
+            formatted_lines.append('  ' + line.strip())
+            # 在每行之間添加一個空白行
+            formatted_lines.append('')
+
+    formatted_content = '\n'.join(formatted_lines)
+    return formatted_content
+
+
+
 ############################################################################################
 
 ############################################################################################
@@ -84,7 +111,7 @@ if __name__ == '__main__':
     txtContents = []
     for eachFile in fileLists:
         with open(eachFile, 'r', encoding='utf-8') as f:
-            content = f.read()
+            content = normalizeTXT(f.read())
             txtContents.append(String2UTF16(content))
 
     #print(txtContents)    
